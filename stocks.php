@@ -2,15 +2,24 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+require 'cacheData.php';
 
 use Scheb\YahooFinanceApi\ApiClient;
 use Scheb\YahooFinanceApi\ApiClientFactory;
 use GuzzleHttp\Client;
 
 function getExchangeRate($curFrom, $curTo){
+    if(!shouldUpdate($curFrom . $curTo . "CUR")){
+        $rate = getStoredArray($curFrom . $curTo . "CUR");
+        $output = "1 " . $curFrom . " = " . $rate->rate ." "  . $curTo;
+        return $output;
+    }
+    
     $client = initApi();
     $exchangeRate = $client->getExchangeRate($curFrom, $curTo);
-    $output = "1 " . $curFrom . " = " . getRates($exchangeRate) ." "  . $curTo;
+    storeJson($curFrom . $curTo . "CUR", $exchangeRate);
+    $rate = getStoredArray($curFrom . $curTo . "CUR");
+    $output = "1 " . $curFrom . " = " . $rate->rate ." "  . $curTo;
     return $output;
 }
 
