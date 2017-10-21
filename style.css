@@ -12,7 +12,7 @@ p {font-family: "Times New Roman"; font-size: small; text-align: center}
     padding: 20px;
     border: 3px solid gray;
     margin: auto;
-    background-color: wheat;
+    background-color: lightgray;
 }
 
 .row{
@@ -37,4 +37,13 @@ p {font-family: "Times New Roman"; font-size: small; text-align: center}
     border-style: groove;
     border-top: 10px solid gray;
     box-sizing: border-box;
+    opacity: 0.8;
+}
+
+.tile:hover{
+    padding: 8px;
+    border-right: 10px solid gray;
+    border-left: 10px solid gray;
+    border-bottom: 10px solid gray;
+    opacity: 1.0;
 }
