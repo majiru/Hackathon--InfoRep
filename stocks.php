@@ -2,10 +2,7 @@
 
 <?php
     require 'stocksBackend.php';
-    $BTC = getExchangeRate("BTC", "USD");
-    $EUR = getExchangeRate("EUR", "USD");
     $listOfCur = array("USD", "EUR", "ILS", "INR"); 
-
 ?>
 
 <html>
