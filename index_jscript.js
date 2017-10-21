@@ -46,3 +46,11 @@ function close_devs(){
     document.getElementById("devs_info").style.display="none";
 }
 
+function open_settings(){
+    alert("test");
+    document.getElementById("queue_vanish").style.display="none";
+    alert("test");
+    document.getElementById("frame").style.display="block";
+}
+
+

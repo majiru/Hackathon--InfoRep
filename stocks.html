@@ -24,14 +24,17 @@
 <span style="font-size:45px;cursor:pointer" onclick="open_menu()">★</span>
 
 <!-- Div's to show all Tiles -->
-<div class="row" id="fade_flex">
-    <div class="tile">
-        <h1>Stock 1</h1>
-        <p> High</p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
+<div class="row" id="fade_flex" >
+    <div class="tile"  onclick="open_settings()">
+        <iframe style="display: none" id="frame" src="settings.html" frameborder="0"></iframe>
+        <div id="queue_vanish">
+            <h1 >Stock 1</h1>
+            <p> High</p>
+            <p> Low </p>
+            <p> Low </p>
+            <p> Low </p>
+            <p> Low </p>
+        </div>
     </div>
     <div class="tile">
         <h1>Stock 2</h1>
