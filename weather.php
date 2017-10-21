@@ -2,6 +2,7 @@
 
 use Cmfcmf\OpenWeatherMap;
 use Cmfcmf\OpenWeatherMap\Exception as OWMException;
+require 'cacheData.php';
 
 require_once __DIR__ .'/vendor/autoload.php';
 ini_set('display_errors', 1);
@@ -44,7 +45,7 @@ function getWeatherObj($location)
     $weather = null;
     try
     {
-    $weather = $owm->getWeather($location,$units,$lang);
+        $weather = $owm->getWeather($location,$units,$lang);
 
     }
     catch (OpenWeatherMap\Exception $exception)
@@ -60,16 +61,21 @@ function getWeatherData($location)
     global $dateFormat;
     $weather = getWeatherObj($location);
     $objWeather = new DaysWeather();
-
-    $objWeather->date = $weather->time->day->format($dateFormat);
-    $objWeather->temp = getTemperatureCurrent($location);
-    $objWeather->tempLow =getTemperatureMin($location);
-    $objWeather->tempHigh =getTemperatureMax($location);
-    $objWeather->pressure = getPressure($location);
-    $objWeather->humidity = getHumidity($location);
-    $objWeather->precip = getPrecipitation($location);
-    $objWeather->sunrise = getSunrise($location);
-    $objWeather->sunset = getSunset($location);
+    $jsonFileName = $location . '-weather';
+    if (shouldUpdate($jsonFileName)){
+        $objWeather->date = $weather->lastUpdate;
+        $objWeather->temp = $weather->temperature->now->getFormatted();
+        $objWeather->tempLow = $weather->temperature->min->getFormatted();
+        $objWeather->tempHigh =$weather->temperature->max->getFormatted();
+        $objWeather->pressure =$weather->precipitation->getFormatted();
+        $objWeather->humidity=$weather->humidity->getFormatted();
+        $objWeather->precip =$weather->precipitation->getFormatted();
+        $objWeather->sunrise =$weather->sun->rise;
+        $objWeather->sunset = $weather->sun->set;
+        storeJson($jsonFileName, $objWeather);
+    }else{
+        $objWeather = getStoredArray($jsonFileName);
+    }
 
     return json_encode($objWeather);
 }
@@ -104,79 +110,37 @@ function getForecastObj($location, $days){
  */
 function getForecastData($location, $days){
     global $dateFormat;
-    $forecast = getForecastObj($location,$days);
+
     $objDays = array();
+    $jsonFileName = $location . '-forecast-' .$days;
 
-    foreach($forecast as $weather)
+    if (shouldUpdate($jsonFileName)){
+
+        $forecast = getForecastObj($location,$days);
+
+        foreach($forecast as $weather)
+        {
+            $objDay = new Forecast;
+            $objDay->date = $weather->time->day->format($dateFormat);
+            $objDay->tempLow = $weather->temperature->min->getFormatted();
+            $objDay->tempHigh = $weather->temperature->max->getFormatted();
+            $objDay->precip =   $weather->precipitation->getFormatted();
+
+            $objDays[] = $objDay;
+        }
+        storeJson($jsonFileName,$objDays);
+
+    }else
     {
-        $objDay = new Forecast;
-        $objDay->date = $weather->time->day->format($dateFormat);
-        $objDay->tempLow = $weather->temperature->min->getFormatted();
-        $objDay->tempHigh = $weather->temperature->max->getFormatted();
-        $objDay->precip =   $weather->precipitation->getFormatted();
-
-        $objDays[] = $objDay;
+        $objDays = getStoredArray( $jsonFileName);
     }
 
     return json_encode($objDays);
 }
 
-function getTemperatureCurrent($location){
-    $weather = getWeatherObj($location);
-    return $weather->temperature;
-}
-function getTemperatureMin($location){
-    $weather = getWeatherObj($location);
-    return $weather->temperature->min;
-}
-function getTemperatureMax($location){
-    $weather = getWeatherObj($location);
-    return $weather->temperature->max;
-}
-function getTemperatureMorning($location){
-    $weather = getWeatherObj($location);
-    return $weather->temperature->morning;
-}
-function getTemperatureDay($location){
-    $weather = getWeatherObj($location);
-    return $weather->temperature->day;
-}
-function getTemperatureNight($location){
-    $weather = getWeatherObj($location);
-    return $weather->temperature->night;
-}
-function getHumidity($location)
-{
-    $weather = getWeatherObj($location);
-    return $weather->humidity;
-}
-
-function getPressure($location)
-{
-    $weather = getWeatherObj($location);
-    return $weather->pressure;
-}
-function getPrecipitation($location)
-{
-    $weather = getWeatherObj($location);
-    return $weather->precipitation;
-}
-
-function getSunrise($location)
-{
-    $weather = getWeatherObj($location);
-    return $weather->sun->rise->format('r');
-}
-
-function getSunset($location)
-{
-    $weather = getWeatherObj($location);
-    return $weather->sun->set->format('r');
-}
 
 
 //echo "Hello World!";
-echo getTemperatureCurrent('ames,ia');
 //echo getTemperatureMax('ames,ia');
 //echo getTemperatureMorning('ames,ia');
 //echo getTemperatureDay('ames,ia');
@@ -186,7 +150,9 @@ echo getTemperatureCurrent('ames,ia');
 //echo getSunrise('ames,ia');
 //echo getSunset('ames,ia');
 //echo $lf;
-//echo getForecastData('ames, ia', 5);
+echo getWeatherData('ames, ia');
+echo $lf;
+echo getForecastData('ames, ia',3);
 
 
 class Forecast

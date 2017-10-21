@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class jsonStorage {
     public $array = NULL;
@@ -8,7 +8,7 @@ class jsonStorage {
 
 
 function storeJson($dataType, $data){
-    $jsonObj = createObject($dataType, $data); 
+    $jsonObj = createObject($dataType, $data);
     writeJson($jsonObj);
 }
 
@@ -23,7 +23,7 @@ function createObject($dataType, $data){
 
 
 function writeJson($jsonObj){
-    unlink($jsonObj->dataType . ".json");
+    if(file_exists($jsonObj->dataType . ".json")) unlink($jsonObj->dataType . ".json");
     $fileBuff = fopen($jsonObj->dataType . ".json", "w");
     fwrite($fileBuff, json_encode($jsonObj));
     fclose($fileBuff);
