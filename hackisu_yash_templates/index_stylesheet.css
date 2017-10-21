@@ -1,0 +1,141 @@
+/*side menu classes*/
+.side_menu {
+    background-color: #DBD6D1;
+    overflow-x: hidden;
+    transition: 0.2s;
+    padding-top: 60px;
+    border : solid darkgray 2px;
+    height: 80%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+}
+
+.side_menu a {
+    display: block;
+    transition: 0.2s;
+    padding: 6px 6px 6px 28px;
+    text-decoration: none;
+    font-size: 30px;
+    color: #2D2824;
+
+}
+
+.side_menu a:hover {
+    color: #5A5047;
+}
+
+.side_menu .side_close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/*loading bar*/
+#loading_bar{
+    margin: 0 auto;
+    text-align: center;
+    border: 20px solid #2D2824;
+    border-top: #6D5782;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spin_garen_spin 1s linear infinite;
+}
+
+#loading_overlay{
+    position:fixed;
+    display:block;
+    width: 100%;
+    height: 100%;
+    padding: 0px 0px 0px 0px;
+    background-color: antiquewhite;
+    transition: 0.2s;
+}
+
+@keyframes spin_garen_spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*menu stuff*/
+.menu_block{
+    /* below is how to center */
+    margin: 0 auto;
+    text-align: center;
+    background-color: antiquewhite;
+    border : solid darkgray 3px;
+    width : 80%;
+    height: 20%;
+}
+
+.smaller_menu_block{
+    /* below is how to center */
+    margin: 0 auto;
+    text-align: center;
+    background-color: antiquewhite;
+    border : solid darkgray 3px;
+    width : 40%;
+    height: 20%;
+}
+
+.menu_info_block{
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: center;
+    background-color: antiquewhite;
+    border : solid darkgray 3px;
+    width : 40%;
+    height: 40%;
+}
+
+.inner_menu{
+    overflow: hidden;
+    text-align: center;
+}
+
+.inner_element{
+    float : left;
+    background-color: blanchedalmond;
+    width: 10%;
+    height: 10%;
+    display: inline-block;
+    min-width: 20%;
+    vertical-align: middle;
+
+}
+
+#inner_home_button{
+    text-align: center;
+}
+
+.center_home_element{
+    margin: 0 auto;
+    margin-top: 5%;
+    background-color: antiquewhite;
+    border : solid darkgray 2px;
+    width : 60%;
+    height: 50%;
+}
+
+.blog_element{
+    margin: 0 auto;
+    margin-top: 5%;
+    background-color: antiquewhite;
+    border : solid darkgray 2px;
+    width : 60%;
+    height: 50%;
+}
+
+.center_img{
+    display: block;
+    margin: auto;
+    height: 60%;
+    width: 45%;
+    border: double 1px;
+}
