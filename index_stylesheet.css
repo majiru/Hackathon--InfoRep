@@ -54,12 +54,14 @@
     width: 100%;
     height: 100%;
     padding: 0px 0px 0px 0px;
+    opacity:0.9;
     background-color: antiquewhite;
     transition: 0.2s;
 }
 
 /*index buttons*/
 #about_info{
+    z-index: 1;
     position:fixed;
     display:none;
     width: 100%;
@@ -71,6 +73,7 @@
 }
 
 #devs_info{
+    z-index: 1;
     position:fixed;
     display:none;
     width: 100%;
@@ -221,3 +224,40 @@
 @keyframes blink {
     50% { opacity: 0; }
 }
+
+/*bottom loading animation*/
+#fade_up{
+    display: none;
+    position: relative;
+    animation-name: fade_up_animation;
+    animation-duration: 1s
+}
+
+#fade_up1{
+    display: none;
+    position: relative;
+    animation-name: fade_up_animation;
+    animation-duration: .7s
+}
+
+#fade_flex{
+    display: none;
+    position: relative;
+    animation-name: fade_up_animation;
+    animation-duration: .7s
+}
+
+
+
+
+@keyframes fade_up_animation {
+    from{
+        bottom:-80px; opacity:0
+    }
+    to{
+        bottom:0; opacity:1
+    }
+}
+
+
+

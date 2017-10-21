@@ -9,7 +9,7 @@
     <style>
     </style>
 </head>
-<body onload="loading_page()" style="background-color: #f1eee9">
+<body onload="loading_page_non_home()" style="background-color: #f1eee9">
 <div id="loading_overlay">
     <div id="loading_bar"></div>
 </div>
@@ -24,7 +24,7 @@
 <span style="font-size:45px;cursor:pointer" onclick="open_menu()">★</span>
 
 <!-- Div's to show all Tiles -->
-<div class="row">
+<div class="row" id="fade_flex">
     <div class="tile">
         <h1>Stock 1</h1>
         <p> High</p>

@@ -12,10 +12,16 @@
 <div id="loading_overlay">
 <div id="loading_bar"></div>
 </div>
-<div id="about_info" onclick="close_about()"> <div class="blog_element" onclick="close_about()"><h1>About</h1><a>4 ISU Undergraduates are working toward
-    representing and storing information in a full-stack esque setup to prevent redundant api calls, keeping everything stored away to be freely called until all
-    api's are queued to be updated. Info Rep was a project originally oriented around the Django framework.
-    PHP was transitioned to as the management and seamless implementation with HTML was valued due to hackathon time constraints.  </a> </div> </div>
+
+<div id="about_info" onclick="close_about()">
+    <div class="blog_element" onclick="close_about()">
+        <h1>About</h1>
+        <a>4 ISU Undergraduates are working toward
+            representing and storing information in a full-stack esque setup to prevent redundant api calls, keeping everything stored away to be freely called until all
+            api's are queued to be updated. Info Rep was a project originally oriented around the Django framework.
+            PHP was transitioned to as the management and seamless implementation with HTML was valued due to hackathon time constraints.  </a>
+    </div>
+</div>
 
 <div id="devs_info" onclick="close_devs()">
     <div class="blog_element" onclick="close_devs()"><h1>Developer Information</h1>
@@ -36,7 +42,9 @@
 
 <span style="font-size:45px;cursor:pointer" onclick="open_menu()">★</span>
 
-<div class="smaller_menu_block">
+
+
+<div class="smaller_menu_block" id="fade_up1">
 
     <div class = inner_menu>
         <h1 id="inner_home_button">WELCOME</h1>
@@ -56,16 +64,17 @@
             <span class="blinky4s">♥</span>
         <span class="blinky5s">♦</span>
     </span>
-
 </div>
 
 
-<div class="menu_block">
-<div class="inner_menu">
-    <h1 class="inner_element" onclick="open_about()">About</h1>
+
+<div class="menu_block" id="fade_up">
+<div class="inner_menu" >
+    <h1 class="inner_element"  onclick="open_about()">About</h1>
     <h1 class="inner_element" onclick="open_devs()">Developers</h1>
 </div>
 </div>
+
 
 
 </body>
