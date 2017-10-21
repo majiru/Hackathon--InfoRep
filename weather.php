@@ -17,15 +17,17 @@ $apiKey = '85e638e29174761a5111c47ccabebfc6';
 
 $owm = null;
 // Language of data (try your own language here!):
-$lang = 'en';
+$lang = 'en'; //ToDo: grab these from settings
 
 // Units (can be 'metric' or 'imperial' [default]):
-$units = 'imperial';
+$units = 'imperial';//ToDo: grab these from settings
+
+$dateFormat = 'M d';
 
 function initApi()
 {
     global $owm;
-    if ($owm == null){
+    if ($owm == null){//ToDo: check if settings have changed then recreate
         // Get OpenWeatherMap object. Don't use caching (take a look into Example_Cache.php to see how it works).
         global $apiKey;
         $owm = new OpenWeatherMap();
@@ -53,6 +55,27 @@ function getWeatherObj($location)
     return $weather;
 }
 
+function getWeatherData($location)
+{
+    global $dateFormat;
+    $weather = getWeatherObj($location);
+    $objWeather = new DaysWeather();
+
+    $objWeather->date = $weather->time->day->format($dateFormat);
+    $objWeather->temp = getTemperatureCurrent($location);
+    $objWeather->tempLow =getTemperatureMin($location);
+    $objWeather->tempHigh =getTemperatureMax($location);
+    $objWeather->pressure = getPressure($location);
+    $objWeather->humidity = getHumidity($location);
+    $objWeather->precip = getPrecipitation($location);
+    $objWeather->sunrise = getSunrise($location);
+    $objWeather->sunset = getSunset($location);
+
+    return json_encode($objWeather);
+}
+
+
+
 function getForecastObj($location, $days){
     $owm  = initApi();
     global $lang, $units;
@@ -72,14 +95,15 @@ function getForecastObj($location, $days){
 }
 
 /**
- * 
- * 
- * @param string $location 
- * @param integer $days 
+ *
+ *
+ * @param string $location
+ * @param integer $days
  * @param string $dateFormat default 'M d'
  * @return string JSON encoded string of the forecast data for last $days
  */
-function getForecastData($location, $days, $dateFormat = 'M d'){
+function getForecastData($location, $days){
+    global $dateFormat;
     $forecast = getForecastObj($location,$days);
     $objDays = array();
 
@@ -100,6 +124,10 @@ function getForecastData($location, $days, $dateFormat = 'M d'){
 function getTemperatureCurrent($location){
     $weather = getWeatherObj($location);
     return $weather->temperature;
+}
+function getTemperatureMin($location){
+    $weather = getWeatherObj($location);
+    return $weather->temperature->min;
 }
 function getTemperatureMax($location){
     $weather = getWeatherObj($location);
@@ -128,6 +156,11 @@ function getPressure($location)
     $weather = getWeatherObj($location);
     return $weather->pressure;
 }
+function getPrecipitation($location)
+{
+    $weather = getWeatherObj($location);
+    return $weather->precipitation;
+}
 
 function getSunrise($location)
 {
@@ -143,7 +176,7 @@ function getSunset($location)
 
 
 //echo "Hello World!";
-//echo getTemperatureCurrent('ames,ia');
+echo getTemperatureCurrent('ames,ia');
 //echo getTemperatureMax('ames,ia');
 //echo getTemperatureMorning('ames,ia');
 //echo getTemperatureDay('ames,ia');
@@ -159,6 +192,17 @@ function getSunset($location)
 class Forecast
 {
 	public $date=NULL;
+    public $tempLow=NULL;
+    public $tempHigh=NULL;
+    public $precip=NULL;
+}
+
+class DaysWeather{
+	public $date=NULL;
+    public $humidity=NULL;
+    public $pressure=NULL;
+    public $sunrise=NULL;
+    public $sunset=NULL;
     public $tempLow=NULL;
     public $tempHigh=NULL;
     public $precip=NULL;
