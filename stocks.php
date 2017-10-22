@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<?php
+    require 'stocksBackend.php';
+    require 'tilePrefs.php';
+    $prefs = getPrefs();
+?>
+
 <html>
 <head>
     <script type="text/javascript" src="index_jscript.js"></script>
@@ -29,12 +36,12 @@
         <div style="display: none" onclick="close_settings(0)" class="exit_button">x</div>
         <iframe style="display: none" class="frame"  frameborder="0"></iframe>
         <div class="queue_vanish" onclick="open_settings(0,'settings.html?property=stocks1')">
-            <h1 >Stock 1</h1>
-            <p> High</p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
+            <h1><?php echo $prefs->boxFromCur[0];  ?></h1>
+			<?php 
+				foreach($prefs->listOfCur as $cur){
+					echo("<p>" .getExchangeRate($prefs->boxFromCur[0], $cur) . "</p>");
+				}
+			?>
         </div>
     </div>
 
@@ -42,12 +49,12 @@
         <div style="display: none" onclick="close_settings(1)" class="exit_button">x</div>
         <iframe style="display: none" class="frame" frameborder="0"></iframe>
         <div class="queue_vanish" onclick="open_settings(1,'settings.html?property=stocks2')">
-            <h1 >Stock 1</h1>
-            <p> High</p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
+            <h1><?php echo $prefs->boxFromCur[1];  ?></h1>
+			<?php 
+				foreach($prefs->listOfCur as $cur){
+					echo("<p>" .getExchangeRate($prefs->boxFromCur[1], $cur) . "</p>");
+				}
+			?>
         </div>
     </div>
 
@@ -55,12 +62,12 @@
         <div style="display: none" onclick="close_settings(2)" class="exit_button">x</div>
         <iframe style="display: none" class="frame" frameborder="0"></iframe>
         <div class="queue_vanish" onclick="open_settings(2,'settings.html?property=stocks3')">
-            <h1 >Stock 1</h1>
-            <p> High</p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
+            <h1><?php echo $prefs->boxFromCur[2];  ?></h1>
+			<?php 
+				foreach($prefs->listOfCur as $cur){
+					echo("<p>" .getExchangeRate($prefs->boxFromCur[2], $cur) . "</p>");
+				}
+			?>
         </div>
     </div>
 
@@ -68,12 +75,12 @@
         <div style="display: none" onclick="close_settings(3)" class="exit_button">x</div>
         <iframe style="display: none" class="frame"  frameborder="0"></iframe>
         <div class="queue_vanish" onclick="open_settings(3,'settings.html?property=stocks4')">
-            <h1 >Stock 1</h1>
-            <p> High</p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
+            <h1><?php echo $prefs->boxFromCur[3];  ?></h1>
+			<?php 
+				foreach($prefs->listOfCur as $cur){
+					echo("<p>" .getExchangeRate($prefs->boxFromCur[3], $cur) . "</p>");
+				}
+			?>
         </div>
     </div>
 
@@ -81,12 +88,12 @@
         <div style="display: none" onclick="close_settings(4)" class="exit_button">x</div>
         <iframe style="display: none" class="frame"  frameborder="0"></iframe>
         <div class="queue_vanish" onclick="open_settings(4,'settings.html?property=stocks5')">
-            <h1 >Stock 1</h1>
-            <p> High</p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
+           <h1><?php echo $prefs->boxFromCur[4];  ?></h1>
+			<?php 
+				foreach($prefs->listOfCur as $cur){
+					echo("<p>" .getExchangeRate($prefs->boxFromCur[4], $cur) . "</p>");
+				}
+			?>
         </div>
     </div>
 
@@ -94,12 +101,12 @@
         <div style="display: none" onclick="close_settings(5)" class="exit_button">x</div>
         <iframe style="display: none" class="frame" frameborder="0"></iframe>
         <div class="queue_vanish" onclick="open_settings(5,'settings.html?property=stocks6')">
-            <h1 >Stock 1</h1>
-            <p> High</p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
+            <h1><?php echo $prefs->boxFromCur[5];  ?></h1>
+			<?php 
+				foreach($prefs->listOfCur as $cur){
+					echo("<p>" .getExchangeRate($prefs->boxFromCur[5], $cur) . "</p>");
+				}
+			?>
         </div>
     </div>
 
