@@ -68,56 +68,43 @@ function getParameterByName(name, url) {
     alert(results[2]);
     if (!results) return null;
     if (!results[2]) return '';
-    alert('made it past');
     let load_targ = results[2];
 
     if(load_targ=="stocks1"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[0].style.display="block";
     }
     if(load_targ=="stocks2"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[1].style.display="block";
     }
     if(load_targ=="stocks3"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[2].style.display="block";
     }
     if(load_targ=="stocks4"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[3].style.display="block";
     }
     if(load_targ=="stocks5"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[4].style.display="block";
     }
     if(load_targ=="stocks6"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[5].style.display="block";
     }
 
     if(load_targ=="weather1"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[6].style.display="block";
     }
     if(load_targ=="weather2"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[7].style.display="block";
     }
     if(load_targ=="weather3"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[8].style.display="block";
     }
     if(load_targ=="weather4"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[9].style.display="block";
     }
     if(load_targ=="weather5"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[10].style.display="block";
     }
     if(load_targ=="weather6"){
-        alert("DJ!");
         document.getElementsByClassName("settings_option")[11].style.display="block";
     }
 
