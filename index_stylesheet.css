@@ -3,12 +3,13 @@ body{
 }
 /*side menu classes*/
 .side_menu {
+    vertical-align: middle;
     background-color: #DBD6D1;
     overflow-x: hidden;
     transition: 0.2s;
     padding-top: 60px;
     border : solid darkgray 2px;
-    height: 80%;
+    height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -24,11 +25,13 @@ body{
     text-decoration: none;
     font-size: 30px;
     color: #2D2824;
+    margin-left:auto;
 
 }
 
 .side_menu a:hover {
     color: #5A5047;
+    background-color:cadetblue;
 }
 
 .side_menu .side_close {
@@ -303,5 +306,18 @@ h1:hover{
     max-height: 40%;
     animation-name: fade_up_animation;
     animation-duration: .7s
+}
+
+.popup{
+    font-size: 10px;
+    display: inline;
+    text-indent: hanging;
+    text-align: justify;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+}
+.popup:hover{
+    cursor: pointer;
+    background-color: cadetblue;
 }
 
