@@ -260,7 +260,7 @@
 }
 
 #test_block{
-    background-color: red;
+    background-color: antiquewhite;
 }
 
 /* test code delete before push */
@@ -269,8 +269,29 @@
     height: 100%;
     border: 1px solid black;
     position:relative;
+    animation-name: fade_up_animation;
+    animation-duration: .7s
 }
 
-#queue_vanish{
-    background-color: blue;
+.queue_vanish{
+    background-color: antiquewhite;
+    animation-name: fade_up_animation;
+    animation-duration: .7s
+}
+
+.exit_button{
+    background-color: antiquewhite;
+    animation-name: fade_up_animation;
+    animation-duration: .7s
+}
+
+.settings_option{
+    display: none;
+    padding: 2%;
+    margin: 0 auto;
+    background-color: antiquewhite;
+    margin-top: 5%;
+    border : solid darkgray 2px;
+    max-width : 30%;
+    max-height: 40%;
 }

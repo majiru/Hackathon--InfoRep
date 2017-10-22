@@ -46,11 +46,18 @@ function close_devs(){
     document.getElementById("devs_info").style.display="none";
 }
 
-function open_settings(){
-    alert("test");
-    document.getElementById("queue_vanish").style.display="none";
-    alert("test");
-    document.getElementById("frame").style.display="block";
+function open_settings(tile_number){
+    document.getElementsByClassName("queue_vanish")[Number(tile_number)].style.display="none";
+    document.getElementsByClassName("frame")[Number(tile_number)].style.display="block";
+    document.getElementsByClassName("exit_button")[Number(tile_number)].style.display="block";
+    document.getElementsByClassName("settings_option")[Number(tile_number)].style.display="block";
+}
+
+function close_settings(tile_number){
+    document.getElementsByClassName("queue_vanish")[Number(tile_number)].style.display="block";
+    document.getElementsByClassName("frame")[Number(tile_number)].style.display="none";
+    document.getElementsByClassName("exit_button")[Number(tile_number)].style.display="none";
+    document.getElementsByClassName("settings_option")[Number(tile_number)].style.display="none";
 }
 
 
