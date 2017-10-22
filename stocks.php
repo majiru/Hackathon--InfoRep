@@ -22,11 +22,29 @@
 </div>
 
 <div id="m_side_menu" class="side_menu">
-    <a href="javascript:void(0)" class="side_close" onclick="close_menu()">&times;</a>
-    <a href="index.html">about / home</a>
-    <a href="https://github.com/sinfulspartan/Hackathon--InfoRep">github</a>
-    <a href="weather.html">weather</a>
-    <a href="stocks.html">stocks</a>
+     <a href="javascript:void(0)" class="side_close" onclick="close_menu()">&times;</a>
+     <a href="index.html">
+        <img src="home-icon.png" width="30px" height="30px">
+        Home
+    </a>
+    <a href="weather.html">
+        <img src="weather-icon.png" width="30px" height="30px">
+        Weather
+    </a>
+    <a href="stocks.html">
+        <img src="stocks-icon.png" width="30px" height="30px">
+        Stocks
+    </a>
+    <div style="position: relative; margin-left: 0.5%; top: 40%;">
+        <a href="https://chris.com" target="_blank" class="popup" style="font-size: 17px">
+            <img src="chris.png" width="30px" height="30px">
+            Git
+        </a>
+        <a href="facebook.com" target="_blank" class="popup" style="font-size: 17px">
+            <img src="Twitter-icon.png" width="30px" height="30px">
+            Twitter
+        </a>
+    </div>
 </div>
 <span style="font-size:45px;cursor:pointer" onclick="open_menu()">★</span>
 
