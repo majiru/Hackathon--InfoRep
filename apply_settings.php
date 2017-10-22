@@ -8,6 +8,4 @@ $prefs->boxFromCur[htmlspecialchars($_GET["id"])] = htmlspecialchars($_POST["ent
 
 storePrefs($prefs);
 
-header("Location:stocks.php")
-
 ?>
