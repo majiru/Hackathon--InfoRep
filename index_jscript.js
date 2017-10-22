@@ -57,6 +57,7 @@ function close_settings(tile_number){
     document.getElementsByClassName("queue_vanish")[Number(tile_number)].style.display="block";
     document.getElementsByClassName("frame")[Number(tile_number)].style.display="none";
     document.getElementsByClassName("exit_button")[Number(tile_number)].style.display="none";
+    window.location.reload()
 }
 
 function getParameterByName(name, url) {
