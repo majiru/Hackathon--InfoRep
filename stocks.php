@@ -2,7 +2,9 @@
 
 <?php
     require 'stocksBackend.php';
-    $listOfCur = array("USD", "EUR", "ILS", "INR"); 
+    require 'tilePrefs.php';
+    $prefs = new stockPrefs();
+
 ?>
 
 <html>
@@ -34,58 +36,56 @@
     <div class="tile"  onclick="open_settings()">
         <iframe style="display: none" id="frame" src="settings.html" frameborder="0"></iframe>
         <div id="queue_vanish">
-            <h1 >Stock 1</h1>
-            <p> High</p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
-            <p> Low </p>
+        <h1><?php echo $prefs->boxFromCur[5];  ?></h1>
+        <?php 
+        foreach($prefs->listOfCur as $cur){
+            echo("<p>" .getExchangeRate($prefs->boxFromCur[5], $cur) . "</p>");
+        }
+        ?>
         </div>
     </div>
     <div class="tile">
-        <h1>BTC</h1>
+    <h1><?php echo $prefs->boxFromCur[0];  ?></h1>
         <?php 
-        foreach($listOfCur as $cur){
-            echo("<p>" .getExchangeRate("BTC", $cur) . "</p>");
+        foreach($prefs->listOfCur as $cur){
+            echo("<p>" .getExchangeRate($prefs->boxFromCur[0], $cur) . "</p>");
         }
         ?>
 
     </div>
     <div class="tile">
-        <h1>EUR</h1>
-        <p> <?php echo $EUR ?></p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
-
+        <h1><?php echo $prefs->boxFromCur[1];  ?> </h1>
+        <?php 
+        foreach($prefs->listOfCur as $cur){
+            echo("<p>" .getExchangeRate($prefs->boxFromCur[1], $cur) . "</p>");
+        }
+        ?>
     </div>
 
     <div class="tile">
-        <h1>Stock 4</h1>
-        <p> High</p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
+        <h1><?php echo $prefs->boxFromCur[2];  ?> </h1>
+        <?php 
+        foreach($prefs->listOfCur as $cur){
+            echo("<p>" .getExchangeRate($prefs->boxFromCur[2], $cur) . "</p>");
+        }
+        ?>
     </div>
     <div class="tile">
-        <h1>Stock 5</h1>
-        <p> High</p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
+        <h1><?php echo $prefs->boxFromCur[3];  ?> </h1>
+        <?php 
+        foreach($prefs->listOfCur as $cur){
+            echo("<p>" .getExchangeRate($prefs->boxFromCur[3], $cur) . "</p>");
+        }
+        ?>
 
     </div>
     <div class="tile">
-        <h1>Stock 6</h1>
-        <p> High</p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
-        <p> Low </p>
-
+        <h1><?php echo $prefs->boxFromCur[4];  ?> </h1>
+        <?php 
+        foreach($prefs->listOfCur as $cur){
+            echo("<p>" .getExchangeRate($prefs->boxFromCur[4], $cur) . "</p>");
+        }
+        ?>
     </div>
 </div>
 
