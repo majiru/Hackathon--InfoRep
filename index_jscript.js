@@ -60,12 +60,10 @@ function close_settings(tile_number){
 }
 
 function getParameterByName(name, url) {
-    alert('function started');
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
     let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
-    alert(results[2]);
     if (!results) return null;
     if (!results[2]) return '';
     let load_targ = results[2];
