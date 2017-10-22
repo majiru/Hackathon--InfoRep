@@ -43,7 +43,7 @@ require 'weatherBackend.php';
         </a>
     </div>
     </div>
-    <span style="font-size:45px;cursor:pointer" onclick="open_menu()">?</span>
+    <span style="font-size:45px;cursor:pointer" onclick="open_menu()">★</span>
 
     <!-- Div's to show all Tiles -->
     <div class="row" id="fade_flex">

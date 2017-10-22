@@ -5,14 +5,14 @@ use Cmfcmf\OpenWeatherMap\Exception as OWMException;
 require 'cacheData.php';
 
 require_once __DIR__ .'/vendor/autoload.php';
-ini_set('display_errors', 1);
+#ini_set('display_errors', 1);
 
-$cli = false;
-$lf = '<br>';
-if (php_sapi_name() === 'cli') {
-    $lf = "\n";
-    $cli = true;
-}
+#$cli = false;
+#$lf = '<br>';
+#if (php_sapi_name() === 'cli') {
+#    $lf = "\n";
+#    $cli = true;
+#}
 
 $apiKey = '85e638e29174761a5111c47ccabebfc6';
 
@@ -62,7 +62,7 @@ function getWeatherData($location)
     $objWeather = new DaysWeather();
     $jsonFileName = $location . '-weather';
     if (shouldUpdate($jsonFileName)){
-        $objWeather->date = $weather->lastUpdate;
+        $objWeather->date = $weather->lastUpdate->format('M d');
         $objWeather->temp = $weather->temperature->now->getFormatted();
         $objWeather->tempLow = $weather->temperature->min->getFormatted();
         $objWeather->tempHigh =$weather->temperature->max->getFormatted();
