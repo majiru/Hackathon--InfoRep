@@ -22,7 +22,7 @@ $lang = 'en'; //ToDo: grab these from settings
 
 // Units (can be 'metric' or 'imperial' [default]):
 $units = 'imperial';//ToDo: grab these from settings
- 
+
 
 function initApi()
 {
@@ -69,8 +69,8 @@ function getWeatherData($location)
         $objWeather->pressure =$weather->precipitation->getFormatted();
         $objWeather->humidity=$weather->humidity->getFormatted();
         $objWeather->precip =$weather->precipitation->getFormatted();
-        $objWeather->sunrise =$weather->sun->rise;
-        $objWeather->sunset = $weather->sun->set;
+        $objWeather->sunrise =$weather->sun->rise->format('g:i a');
+        $objWeather->sunset = $weather->sun->set->format('g:i a');
         storeJson($jsonFileName, $objWeather);
     }else{
         $objWeather = getStoredArray($jsonFileName);
@@ -107,7 +107,7 @@ function getForecastObj($location, $days){
  * @param string $dateFormat default 'M d'
  * @return string JSON encoded string of the forecast data for last $days
  */
-function getForecastData($location, $days, $dateFormat = 'M d'){ 
+function getForecastData($location, $days, $dateFormat = 'M d'){
 
     $objDays = array();
     $jsonFileName = $location . '-forecast-' .$days;
@@ -147,9 +147,9 @@ function getForecastData($location, $days, $dateFormat = 'M d'){
 //echo getSunrise('ames,ia');
 //echo getSunset('ames,ia');
 //echo $lf;
-echo getWeatherData('ames, ia');
-echo $lf;
-echo getForecastData('ames, ia',3,'M d');
+//echo getWeatherData('ames, ia');
+//echo $lf;
+//echo getForecastData('ames, ia',3,'M d');
 
 
 class Forecast
