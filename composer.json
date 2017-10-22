@@ -1,5 +1,6 @@
 {
     "require": {
-        "cmfcmf/openweathermap-php-api": "^2.2"
+        "cmfcmf/openweathermap-php-api": "^2.2",
+        "scheb/yahoo-finance-api": "^2.1"
     }
 }
