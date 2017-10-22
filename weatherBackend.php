@@ -22,8 +22,7 @@ $lang = 'en'; //ToDo: grab these from settings
 
 // Units (can be 'metric' or 'imperial' [default]):
 $units = 'imperial';//ToDo: grab these from settings
-
-$dateFormat = 'M d';
+ 
 
 function initApi()
 {
@@ -108,8 +107,7 @@ function getForecastObj($location, $days){
  * @param string $dateFormat default 'M d'
  * @return string JSON encoded string of the forecast data for last $days
  */
-function getForecastData($location, $days){
-    global $dateFormat;
+function getForecastData($location, $days, $dateFormat = 'M d'){ 
 
     $objDays = array();
     $jsonFileName = $location . '-forecast-' .$days;
@@ -129,7 +127,6 @@ function getForecastData($location, $days){
             $objDays[] = $objDay;
         }
         storeJson($jsonFileName,$objDays);
-
     }else
     {
         $objDays = getStoredArray( $jsonFileName);
@@ -152,7 +149,7 @@ function getForecastData($location, $days){
 //echo $lf;
 echo getWeatherData('ames, ia');
 echo $lf;
-echo getForecastData('ames, ia',3);
+echo getForecastData('ames, ia',3,'M d');
 
 
 class Forecast
