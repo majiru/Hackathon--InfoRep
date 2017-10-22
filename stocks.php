@@ -36,11 +36,11 @@
         Stocks
     </a>
     <div style="position: relative; margin-left: 0.5%; top: 40%;">
-        <a href="https://chris.com" target="_blank" class="popup" style="font-size: 17px">
+        <a href="https://github.com/sinfulspartan/Hackathon--InfoRep" target="_blank" class="popup" style="font-size: 17px">
             <img src="chris.png" width="30px" height="30px">
             Git
         </a>
-        <a href="facebook.com" target="_blank" class="popup" style="font-size: 17px">
+        <a href="chris.com" target="_blank" class="popup" style="font-size: 17px">
             <img src="Twitter-icon.png" width="30px" height="30px">
             Twitter
         </a>
